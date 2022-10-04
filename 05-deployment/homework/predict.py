@@ -2,8 +2,8 @@ import pickle
 
 from flask import Flask, jsonify, request
 
-model_file_path = "/home/jvictor/vs_code/mlzoomcamp2022_jvscursulim/05-deployment/model/model1.bin"
-dv_file_path = "/home/jvictor/vs_code/mlzoomcamp2022_jvscursulim/05-deployment/model/dv.bin"
+model_file_path = "05-deployment/homework/model1.bin"
+dv_file_path = "05-deployment/homework/dv.bin"
 
 with open(file=model_file_path, mode="rb") as model_file:
     model = pickle.load(model_file)
