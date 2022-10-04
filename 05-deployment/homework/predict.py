@@ -2,20 +2,17 @@ import pickle
 
 from flask import Flask, jsonify, request
 
-model_file_path = "05-deployment/homework/model1.bin"
-dv_file_path = "05-deployment/homework/dv.bin"
-
-with open(file=model_file_path, mode="rb") as model_file:
-    model = pickle.load(model_file)
-    
-with open(file=dv_file_path, mode="rb") as dv_file:
-    dv = pickle.load(dv_file)
-
 app = Flask('predict')
 
 @app.route('/predict', methods=['POST'])
 def predict():
     
+    with open(file="model1.bin", mode="rb") as model_file:
+        model = pickle.load(model_file)
+        
+    with open(file="dv.bin", mode="rb") as dv_file:
+        dv = pickle.load(dv_file)
+        
     client = request.get_json()
     
     X = dv.transform([client])
